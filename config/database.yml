@@ -87,3 +87,5 @@ production:
   password: <%= ENV["PGPASSWORD"] %>
   port: <%= ENV["PGPORT"] %>
   url: <%= ENV["DATABASE_URL"] %>
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") %>
