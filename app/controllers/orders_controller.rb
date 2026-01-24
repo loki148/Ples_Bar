@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.where(progress: %w[preparing ready]).order(:color, :number)
+    @orders = Order.where(progress: %w[preparing ready]).order(:color, :number, :tyholt,:pina,:mojito)
   end
 
   def public_index
@@ -9,12 +9,22 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new(number: session[:number], color: session[:color])
+    @order = Order.new(number: session[:number], color: session[:color], tyholt: session[:tyholt], pina: session[:pina], mojito: session[:mojito])
   end
 
   def create
-    @order = Order.new(order_params.merge({ progress: :preparing }))
-
+    tweaker = order_params
+    if tweaker["tyholt"] == "0"
+      tweaker["tyholt"] = nil
+    end
+    if tweaker["pina"] == "0"
+      tweaker["pina"] = nil
+    end
+    if tweaker["mojito"] == "0"
+      tweaker["mojito"] = nil
+    end
+    
+    @order = Order.new(tweaker.merge({ progress: :preparing }))
     if @order.save
       session[:number] = @order.number + 1
       session[:color] = @order.color
@@ -26,7 +36,15 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
 
-    if @order.delivered? && @order.delete
+    if @order.delivered?
+      CompletedOrder.create!(
+        number:  @order.number,
+        color:   @order.color,
+        tyholt:  @order.tyholt,
+        pina:    @order.pina,
+        mojito:  @order.mojito
+      )
+      @order.delete
       head :ok
     else
       head :unprocessable_entity
@@ -64,6 +82,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:number, :color)
+    params.require(:order).permit(:number, :color, :tyholt, :pina, :mojito)
   end
 end

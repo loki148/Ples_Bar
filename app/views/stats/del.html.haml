@@ -1,0 +1,10 @@
+.container.position-absolute.top-50.start-50.translate-middle.d-flex.align-items-center.flex-column
+    %h1 DELETE ALL STATISTICS
+
+    %hr
+
+    = button_to "Reset",
+        reset_stats_path,
+        method: :post,
+        data: { confirm: "Naozaj chceš vymazať všetky štatistiky?" },
+        class: "btn btn-danger mb-4"

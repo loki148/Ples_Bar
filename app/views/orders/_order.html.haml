@@ -1,6 +1,9 @@
 %tr{ id: dom_id(order) }
   %th.fs-2{ class: order.bootstrap_text_color }= order.number
   %td= order.progress_in_words
+  %td= order.pina 
+  %td= order.mojito 
+  %td= order.tyholt
   %td
     - if order.preparing?
       = link_to ready_order_path(order), data: { turbo_method: :post } do

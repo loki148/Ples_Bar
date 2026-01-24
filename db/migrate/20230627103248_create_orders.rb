@@ -4,7 +4,9 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.integer :number
       t.string :color
       t.string :progress
-
+      t.integer :tyholt
+      t.integer :pina
+      t.integer :mojito
       t.timestamps
     end
   end

@@ -1,0 +1,46 @@
+.container
+  %h1 Štatistiky
+
+  %hr
+  .text-end
+    = link_to reset_stats_path,
+      method: :get,
+      data: { confirm: "Naozaj chceš resetovať štatistiky?" },
+      class: "btn btn-danger rounded-pill btn-lg px-5 mb-4" do
+      Reset
+
+  %h2 Celkom
+  %p
+    %strong Počet objednávok:
+    = @total_orders
+  %p
+    %strong Počet drinkov:
+    = @total_drinks
+
+  %ul
+    %li Tyholt: #{@total_tyholt}
+    %li Piña Colada: #{@total_pina}
+    %li Mojito: #{@total_mojito}
+
+  %hr
+
+  %h2 Spotreba podľa času (30 min)
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Čas
+        %th Tyholt
+        %th Piña
+        %th Mojito
+        %th Spolu
+    %tbody
+      - @by_half_hour.each do |time, tyholt, pina, mojito|
+        - total = tyholt.to_i + pina.to_i + mojito.to_i
+        %tr
+          %td= time.strftime("%H:%M")
+          %td= tyholt || 0
+          %td= pina || 0
+          %td= mojito || 0
+          %td.fw-bold= total
+        

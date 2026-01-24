@@ -5,24 +5,12 @@
   = form_with model: order, url: form_path do |form|
     .d-flex.justify-content-center.gap-3.mb-3
       .d-flex.justify-content-center
-        = form.radio_button :color, :red, class: 'btn-check visually-hidden'
-        = form.label :color_red, 'Červená', class: 'btn btn-outline-danger rounded-pill'
-      .d-flex.justify-content-center
-        = form.radio_button :color, :green, class: 'btn-check'
-        = form.label :color_green, 'Zelená', class: 'btn btn-outline-success rounded-pill'
-      .d-flex.justify-content-center
-        = form.radio_button :color, :blue, class: 'btn-check'
-        = form.label :color_blue, 'Modrá', class: 'btn btn-outline-blue rounded-pill'
-      .d-flex.justify-content-center
         = form.radio_button :color, :yellow, class: 'btn-check'
         = form.label :color_yellow, 'Žltá', class: 'btn btn-outline-warning rounded-pill'
-    .d-flex.justify-content-center.gap-3.mb-4
       .d-flex.justify-content-center
         = form.radio_button :color, :pink, class: 'btn-check'
         = form.label :color_pink, 'Ružová', class: 'btn btn-outline-pink rounded-pill'
-      .d-flex.justify-content-center
-        = form.radio_button :color, :purple, class: 'btn-check'
-        = form.label :color_purple, 'Fialová', class: 'btn btn-outline-purple rounded-pill'
+
       .d-flex.justify-content-center
         = form.radio_button :color, :orange, class: 'btn-check'
         = form.label :color_orange, 'Oranžová', class: 'btn btn-outline-orange rounded-pill'
@@ -36,5 +24,78 @@
     - elsif @order.errors.include?(:base)
       .text-danger-emphasis.text-center.mb-5.mt-2
         = @order.errors.full_messages_for(:base).first
+      
+    .d-flex.justify-content-between.gap-3.mb-4
+      .d-flex.justify-content-center
+        %h3{class: "text-orange"} Tyholt
+      .d-flex.justify-content-center.gap-3.mb-4
+        .d-flex.justify-content-center
+          = form.radio_button :tyholt, 0, class: 'btn-check'
+          = form.label :tyholt_0, '0', class: 'btn btn-outline-orange rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :tyholt, 1, class: 'btn-check'
+          = form.label :tyholt_1, 1, class: 'btn btn-outline-orange rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :tyholt, 2, class: 'btn-check'
+          = form.label :tyholt_2, 2, class: 'btn btn-outline-orange rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :tyholt, 3, class: 'btn-check'
+          = form.label :tyholt_3, 3, class: 'btn btn-outline-orange rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :tyholt, 4, class: 'btn-check'
+          = form.label :tyholt_4, 4, class: 'btn btn-outline-orange rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :tyholt, 5, class: 'btn-check'
+          = form.label :tyholt_5, 5, class: 'btn btn-outline-orange rounded-pill'
+      .d-flex.justify-content-center
+
+    .d-flex.justify-content-between.gap-3.mb-4
+      .d-flex.justify-content-center
+        %h3{class: "text-blue"}  Piňa__
+      .d-flex.justify-content-center.gap-3.mb-4
+        .d-flex.justify-content-center
+          = form.radio_button :pina, 0, class: 'btn-check'
+          = form.label :pina_0, 0, class: 'btn btn-outline-blue rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :pina, 1, class: 'btn-check'
+          = form.label :pina_1, 1, class: 'btn btn-outline-blue rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :pina, 2, class: 'btn-check'
+          = form.label :pina_2, 2, class: 'btn btn-outline-blue rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :pina, 3, class: 'btn-check'
+          = form.label :pina_3, 3, class: 'btn btn-outline-blue rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :pina, 4, class: 'btn-check'
+          = form.label :pina_4, 4, class: 'btn btn-outline-blue rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :pina, 5, class: 'btn-check'
+          = form.label :pina_5, 5, class: 'btn btn-outline-blue rounded-pill'
+      .d-flex.justify-content-center
+
+    .d-flex.justify-content-between.gap-3.mb-4
+      .d-flex.justify-content-center
+        %h3{class: "text-success"} Mojito
+      .d-flex.justify-content-center.gap-3.mb-4
+        .d-flex.justify-content-center
+          = form.radio_button :mojito, 0, class: 'btn-check'
+          = form.label :mojito_0, 0, class: 'btn btn-outline-success rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :mojito, 1, class: 'btn-check'
+          = form.label :mojito_1, 1, class: 'btn btn-outline-success rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :mojito, 2, class: 'btn-check'
+          = form.label :mojito_2, 2, class: 'btn btn-outline-success rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :mojito, 3, class: 'btn-check'
+          = form.label :mojito_3, 3, class: 'btn btn-outline-success rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :mojito, 4, class: 'btn-check'
+          = form.label :mojito_4, 4, class: 'btn btn-outline-success rounded-pill'
+        .d-flex.justify-content-center
+          = form.radio_button :mojito, 5, class: 'btn-check'
+          = form.label :mojito_5, 5, class: 'btn btn-outline-success rounded-pill'
+      .d-flex.justify-content-center
+    
     .d-flex.justify-content-center.pt-4
       = form.submit submit_text, class: 'btn btn-success rounded-pill px-5 btn-lg'
