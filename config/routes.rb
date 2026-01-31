@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/idle", to: "pages#idle"
   get "/stats", to: "stats#index"
   get "/stats/reset", to: "stats#del"
   resource :stats, only: [:index] do

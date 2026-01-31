@@ -22,4 +22,7 @@ class PagesController < ApplicationController
   def model_name
     Order
   end
+
+  def idle
+  end
 end
